@@ -22,6 +22,104 @@
     font-size: 50px;
     color: white;
 }
+.life
+{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    color: gray;
+    font-size: 40px;
+}
+.alive
+{
+    color: #e41f1f;
+}
+.score
+{
+    /* background-color: black; */
+    height: 100px;
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    font-family: 'Metal Mania', cursive;
+    text-shadow: 0px 0px 10px black;
+    font-size: 40px;
+    color: white;
+}
+.commander
+{
+    /* background-color: black; */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    right: 0px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    outline: none;
+    font-size: 18px;
+    padding: 10px 20px;
+    width: 200px;
+    height: 30px;
+}
+.help
+{
+        background-color: #171717;  
+        position: absolute;
+        bottom: 20px;
+        border: none;
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+        right: 0px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        z-index: 2;
+        outline: none;
+        font-size: 18px;
+        padding: 10px 20px;
+        width: 200px;
+        height: 250px;
+        color: white;
+        font-family: sans-serif;
+        
+}
+.help > p:first-child
+{
+    text-align: center;
+    font-family: 'Metal Mania', cursive;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+.commands
+{
+    text-transform: capitalize;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.timer
+{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 50px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    font-size: 18px;
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Metal Mania', cursive;
+    font-size: 100px;
+    color: aqua;
+    border: 2px solid white;
+    background-color: black;
+}
 .container
 {
     justify-content: center;
@@ -34,4 +132,18 @@
     left: 50%;
     bottom: 20px;
     transform: translateX(-50%);
+}
+
+.container .crosshair
+{
+    position: absolute;
+    z-index: 2;
+    left: 250px;
+    width: 100px;
+}
+
+.container .archery
+{
+    position: absolute;
+    width: 200px;
 }

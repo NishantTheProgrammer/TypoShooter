@@ -6,15 +6,39 @@
     <link rel="stylesheet" href="./style.css">
 
     <script src="https://unpkg.com/vue"></script>
+    <script src="https://kit.fontawesome.com/029682b453.js" crossorigin="anonymous"></script>
     <title>TypoShooter</title>
 </head>
 <body>
     <div id="app">
         <h1 class="title">TypoShooter</h1>
-        <div class="container">
-            hi
+        <div class="life">
+            <i class="alive fas fa-heart "></i>
+            <i class="alive fas fa-heart"></i>
+            <i class="alive fas fa-heart"></i>
+            <i class="fas fa-heart"></i>
         </div>
-    </div>
+        <div class="score">
+            Score: {{ score }}
+        </div>
+        <input type="text" class="commander" autofocus="autofocus">
+        <div class="help">
+            <p>Commands</p>
+            <div class="commands">
+                <p><i class="fas fa-arrow-left"></i> Left</p>
+                <p><i class="fas fa-arrow-right"></i> Right</p>
+                <p><i class="fas fa-arrow-up"></i> up</p>
+                <p><i class="fas fa-arrow-down"></i> down</p>
+                <p style="color: #ffb042"><i class="fas fa-meteor" ></i> Shoot</p>
+            </div>
+        </div>
+        <div class="timer">{{ time}}</div>
+        <div class="container">
+            <img src="./assets/img/crosshair.png" alt="" class="crosshair">
+            <img src="./assets/img/archery.png" alt="" class="archery">
+            
+        </div>
+        </div>
 </body>
 <script src="./script.js"></script>
 </html>
