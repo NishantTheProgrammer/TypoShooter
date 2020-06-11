@@ -154,6 +154,7 @@
 
 .container .crosshair
 {
+    transition: ease-in-out all 1s;
     position: absolute;
     z-index: 2;
     left: 250px;
@@ -162,6 +163,7 @@
 
 .container .archery
 {
+    transition: ease-in-out all 1s;
     position: absolute;
     width: 200px;
 }

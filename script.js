@@ -10,7 +10,16 @@ new Vue({
         color: 'blue',
         archery: [400, 200],     // x, y cordinates
         crosshair: [450, 250],     // x, y cordinates
-        activity: 0
+        activity: 0,
+        shootImg: 0,
+
+
+
+        //--------------------------------------Sounds--------------------------------------------------------
+
+        slip: new Audio('./assets/sound/slip.mp3'),
+        shoot: new Audio('./assets/sound/shoot.mp3'),
+        startingMusic: new Audio('./assets/sound/starting.mp3')
     },
     methods: {
         commander: function(event)
@@ -18,11 +27,12 @@ new Vue({
             const command = event.target.value.toLowerCase().split(" ");
             event.target.value = "";
 
-            this.activity++;
+            this.activity++;        //to fix issue of not updating style
             switch(command[0])
             {
-                //----------------------------------------------------Start Command---------------------------------------------------------------            
+                //----------------------------------------------------Start Command-----------------------------------------------------          
                 case "start":
+                    this.startingMusic.play();
                     this.time = 30;
                     setInterval(()=>{
                         this.time--;
@@ -35,30 +45,42 @@ new Vue({
                  break;
 
 
-                //----------------------------------------------------Left Command---------------------------------------------------------------            
+                //----------------------------------------------------Left Command------------------------------------------------------          
                 case "left":
+                    this.slip.play();
                     this.crosshair[0] -= Number(command[1]);
 
                  break;
 
 
-                //----------------------------------------------------Right Command---------------------------------------------------------------            
+                //----------------------------------------------------Right Command-----------------------------------------------------          
                 case "right":
+                    this.slip.play();
                     this.crosshair[0] += Number(command[1]);
 
                  break;
 
 
-                //----------------------------------------------------Up Command---------------------------------------------------------------            
+                //----------------------------------------------------Up Command--------------------------------------------------------         
                 case "up":
+                    this.slip.play();
                     this.crosshair[1] -= Number(command[1]);
 
                  break;
 
 
-                //----------------------------------------------------Down Command---------------------------------------------------------------            
+                //----------------------------------------------------Down Command-------------------------------------------------------           
                 case "down":
+                    this.slip.play();
                     this.crosshair[1] += Number(command[1]);
+
+                 break;
+
+
+                //----------------------------------------------------Shoot-------------------------------------------------------           
+                case "shoot":
+                    this.shootImg = 1;
+                    this.shoot.play();
 
                  break;
             }
