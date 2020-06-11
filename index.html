@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <script src="https://kit.fontawesome.com/029682b453.js" crossorigin="anonymous"></script>
     <title>TypoShooter</title>
 </head>
+
 <body>
     <div id="app">
         <h1 class="title">TypoShooter</h1>
@@ -21,7 +23,10 @@
         <div class="score">
             Score: {{ score }}
         </div>
-        <input type="text" class="commander" autofocus="autofocus">
+        <div class="score" style="top: 90px;">
+            Stage: {{ stage }}
+        </div>
+        <input type="text" class="commander" @keyup.enter="commander">
         <div class="help">
             <p>Commands</p>
             <div class="commands">
@@ -29,16 +34,22 @@
                 <p><i class="fas fa-arrow-right"></i> Right</p>
                 <p><i class="fas fa-arrow-up"></i> up</p>
                 <p><i class="fas fa-arrow-down"></i> down</p>
-                <p style="color: #ffb042"><i class="fas fa-meteor" ></i> Shoot</p>
+                <p style="color: #ffb042"><i class="fas fa-meteor"></i> Shoot</p>
             </div>
         </div>
         <div class="timer">{{ time}}</div>
+        <a href="https://github.com/NishantTheProgrammer/TypoShooter" class="source"><i
+                class="fab fa-github"></i>&nbsp;Source Code</a>
         <div class="container">
-            <img src="./assets/img/crosshair.png" alt="" class="crosshair">
-            <img src="./assets/img/archery.png" alt="" class="archery">
-            
+            <img src="./assets/img/archery.png" alt="" class="archery"
+                :style="[{left: archery[0] + 'px'}, {top: archery[1] + 'px'}]">
+            <img src="./assets/img/crosshair.png" alt="" class="crosshair"
+                :style="[{left: crosshair[0] + 'px'}, {top: crosshair[1] + 'px'}]">
+
         </div>
-        </div>
+        <p>{{ activity }}</p>
+    </div>
 </body>
 <script src="./script.js"></script>
+
 </html>
