@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
 
+    <link rel="icon" href="./assets/img/archery.png">
+
     <script src="https://unpkg.com/vue"></script>
     <script src="https://kit.fontawesome.com/029682b453.js" crossorigin="anonymous"></script>
     <title>TypoShooter</title>
@@ -15,10 +17,10 @@
     <div id="app">
         <h1 class="title">TypoShooter</h1>
         <div class="life">
-            <i class="alive fas fa-heart "></i>
-            <i class="alive fas fa-heart"></i>
-            <i class="alive fas fa-heart"></i>
-            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart" :class="{alive: lives > 0}"></i>
+            <i class="fas fa-heart" :class="{alive: lives > 1}"></i>
+            <i class="fas fa-heart" :class="{alive: lives > 2}"></i>
+            <i class="fas fa-heart" :class="{alive: lives > 3}"></i>
         </div>
         <div class="score">
             Score: {{ score }}
@@ -26,6 +28,7 @@
         <div class="score" style="top: 90px;">
             Stage: {{ stage }}
         </div>
+        <div class="commander" :class="{scorePopUp: addPoint}">+{{ points }}</div>
         <input type="text" class="commander" @keyup.enter="commander">
         <div class="help">
             <p>Commands</p>
@@ -41,13 +44,41 @@
         <a href="https://github.com/NishantTheProgrammer/TypoShooter" class="source"><i
                 class="fab fa-github"></i>&nbsp;Source Code</a>
         <div class="container">
-            <img src="./assets/img/archery.png" alt="" class="archery"
+            <img src="./assets/img/archery.png" alt="" 
+                class="archery"
                 :style="[{left: archery[0] + 'px'}, {top: archery[1] + 'px'}]">
-            <img src="./assets/img/crosshair.png" alt="" class="crosshair"
-                :style="[{left: crosshair[0] + 'px'}, {top: crosshair[1] + 'px'}]">
-            <img src="./assets/img/gunshoot.png" alt="" class="crosshair" style="width: 50px; height: 50px;"
-                :style="[{left: crosshair[0] + 25 + 'px'}, {top: crosshair[1] + 25 + 'px'}, {opacity: shootImg}]">
 
+            <img src="./assets/img/crosshair.png" alt="" 
+                class="crosshair"
+                :style="[{left: crosshair[0] + 'px'}, {top: crosshair[1] + 'px'}]">
+
+            <img src="./assets/img/gunshoot.png" alt="" 
+                class="crosshair" style="width: 50px; height: 50px;"
+                :style="[{left: crosshair[0] + 25 + 'px'}, {top: crosshair[1] + 25 + 'px'}, {opacity: shootImg}]">
+        </div>
+        <div class="infoPanel" :class="[{source: !infoPanel}, {container: infoPanel}]">
+            <i class="fa " :class="[{'fa-question-circle': !infoPanel}, {'fa-times': infoPanel}]"  @click="infoPanel = !infoPanel"></i>
+            <div class="info" :class="{invisible: !infoPanel}">
+                <div class="howTo" :class="{invisible: !infoPanel}">
+                    <h1>How To Play</h1>
+                    <ul>
+                        <li>Type <span>"start"</span> to start the game </li>
+                        <li>For moving crosshair type the name of direction and then space and then 
+                            value which you want to move in pixels. <span>Ex: left 40</span></li>
+                        <li>When your crosshair at the the target type <span>"shoot"</span></li>
+                    </ul>
+                </div>
+                <div class="scoringScheme" :class="{invisible: !infoPanel}">
+                    <h1>Scoring Scheem</h1>
+                    <ul>
+                        <li>The points are compound of two things</li>
+                        <li><span>Remaining Time</span> + <span>Distance between</span> crosshair and archery</li>
+                        <li>1 Remaining second = <span>2 points</span></li>
+                        <li>crosshair 0px far from archery = <span>100 points</span></li>
+                        <li>To score high type fast and and be accurate to your target</span></li>
+                    </ul>
+                </div>
+            </div>
         </div>
         <p style="display: none;">{{ activity }}</p>
     </div>

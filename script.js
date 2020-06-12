@@ -4,14 +4,17 @@ new Vue({
     el: '#app',
     data: {
         stage: 0,
-        lives: 3,
-        score: 230,
+        lives: 4,
+        score: 0,
         time: 0,
         color: 'blue',
         archery: [400, 200],     // x, y cordinates
         crosshair: [450, 250],     // x, y cordinates
         activity: 0,
         shootImg: 0,
+        addPoint: false,
+        points: 0,
+        infoPanel: false,
 
 
 
@@ -32,9 +35,15 @@ new Vue({
             {
                 //----------------------------------------------------Start Command-----------------------------------------------------          
                 case "start":
+                    this.stage++;
                     this.startingMusic.play();
                     this.time = 30;
-                    setInterval(()=>{
+                    let countDown = setInterval(()=>{
+                        if(this.time == 1)
+                        {
+                            this.lives--;
+                            clearInterval(countDown);
+                        }
                         this.time--;
                     }, 1000)
                     this.archery[0] = Math.floor((Math.random() * 800));            // 1000 - 200
@@ -81,12 +90,36 @@ new Vue({
                 case "shoot":
                     this.shootImg = 1;
                     this.shoot.play();
+                    let distance = this.calDistance();
+                    if(distance < 100)        // true when target is under range of archery
+                    {
+                        this.points = Math.round(100 - distance) + (this.time * 2)     // 1 second == 2 points
+                        this.addPoint = true;
+                        
+                        setTimeout(()=>{
+                            this.score += this.points;
+                            this.addPoint = false;
+                            this.points = 0;
+                        }, 1000)
+                    }
+                    else                                // shoot outside the archery
+                    {
+                        console.log("Very bad");
+                    }
 
                  break;
             }
             
 
 
+        },
+        calDistance: function()
+        {
+            let distance = [Math.abs(this.archery[0] - this.crosshair[0] + 50),         // +50 because archery image 200x200 and crosshair image 100x100
+                            Math.abs(this.archery[1] - this.crosshair[1]  + 50)];
+
+            actualDistance = Math.sqrt((distance[0] * distance[0]) + (distance[1] * distance[1]))       // Pythagoras Theory
+            return actualDistance;            
         }
     }
 });
