@@ -29,7 +29,7 @@
             Stage: {{ stage }}
         </div>
         <div class="commander" :class="{scorePopUp: addPoint}">+{{ points }}</div>
-        <input type="text" class="commander" @keyup.enter="commander">
+        <input type="text" class="commander" @keyup.enter="commander" autofocus>
         <div class="help">
             <p>Commands</p>
             <div class="commands">
@@ -75,11 +75,24 @@
                         <li><span>Remaining Time</span> + <span>Distance between</span> crosshair and archery</li>
                         <li>1 Remaining second = <span>2 points</span></li>
                         <li>crosshair 0px far from archery = <span>100 points</span></li>
-                        <li>To score high type fast and and be accurate to your target</span></li>
+                        <li>To score high type fast and be accurate to your target</span></li>
                     </ul>
                 </div>
             </div>
         </div>
+        <div class="gameOver container" :class="{invisible: !gameOver}">
+            
+            <h1>Game Over</h1>
+            <p>Score: {{ score }}</p>
+            <p>Type <span style="color: aqua">"Restart"</span> to restart game</p>
+        </div>
+
+        <div class="screenIssue">
+            <p> 1920x1080 Screen required</p>
+            <a href="https://youtu.be/L3FN07wAYB4">Video</a> <a href="https://github.com/NishantTheProgrammer/TypoShooter">Source Code</a>
+            
+        </div>
+
         <p style="display: none;">{{ activity }}</p>
     </div>
 </body>

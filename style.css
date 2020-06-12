@@ -219,10 +219,11 @@
 {
     font-size: 50px;
     text-align: center;
+    color:rgb(255, 166, 0);
 }
 .info li
 {
-    font-size: 25px;
+    font-size: 24px;
     margin: 20px 40px;
 }
 .info li span
@@ -263,5 +264,48 @@
     transition: ease-in-out all 1s;
     position: absolute;
     width: 200px;
+}
+.gameOver
+{
+    color: white;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+.gameOver h1
+{
+    font-family: 'Metal Mania', cursive;
+    font-size: 150px;
+    color: red;
+    margin-top: 100px;
+}
+.gameOver p
+{
+    font-family: 'Metal Mania', cursive;
+    font-size: 50px;
+}
+.screenIssue
+{
+    background-color: black;
+    position: absolute;
+    height: 100vh;
+    z-index: 3;
+    width: 100vw;
+    color: white;
+    font-family: 'Metal Mania', cursive;
+    font-size: 5vw;
+    color: red;
+    text-align: center;
+    display: none;
+
+}
+
+@media screen and (max-width: 1500px)
+{
+    .screenIssue
+    {
+        display: block;
+    }
 }
 
